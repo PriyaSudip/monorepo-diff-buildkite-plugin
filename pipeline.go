@@ -206,11 +206,11 @@ func generatePipeline(steps []Step, plugin Plugin) (*os.File, bool, error) {
 
 	yamlNotify := make([]yaml.Marshaler, len(plugin.Notify))
 	for i, n := range plugin.Notify {
-		fmt.Printf("notify i : %v\n", i)
-		fmt.Printf("notify n : %v\n", n)
+		log.Infof("--- notify %s", n)
+		log.Infof("--- notify %s", i)
 		yamlNotify[i] = n
 	}
-
+	log.Infof("--- steps %s", yamlSteps)
 	fmt.Printf("steps: %v\n", yamlSteps)
 
 	pipeline := map[string][]yaml.Marshaler{
@@ -228,7 +228,7 @@ func generatePipeline(steps []Step, plugin Plugin) (*os.File, bool, error) {
 
 	// Disable logging in context of go tests.
 	if env("TEST_MODE", "") != "true" {
-		fmt.Printf("Generated Pipeline:\n%s\n", string(data))
+		fmt.Printf("Generated Pipeline is:\n%s\n", string(data))
 	}
 
 	if err = os.WriteFile(tmp.Name(), data, 0o644); err != nil {
