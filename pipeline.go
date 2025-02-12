@@ -206,8 +206,12 @@ func generatePipeline(steps []Step, plugin Plugin) (*os.File, bool, error) {
 
 	yamlNotify := make([]yaml.Marshaler, len(plugin.Notify))
 	for i, n := range plugin.Notify {
+		fmt.Printf("notify i : %v\n", i)
+		fmt.Printf("notify n : %v\n", n)
 		yamlNotify[i] = n
 	}
+
+	fmt.Printf("steps: %v\n", yamlSteps)
 
 	pipeline := map[string][]yaml.Marshaler{
 		"steps": yamlSteps,
