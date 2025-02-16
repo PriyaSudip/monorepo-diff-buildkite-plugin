@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
+echo "Test 1"
 check_cmd() {
   command -v "$1" > /dev/null 2>&1
   return $?
 }
-
+echo "Test 1.1"
 say() {
     echo "$1"
 }
-
+echo "Test 2"
 err() {
   red=$(tput setaf 1 2>/dev/null || echo '')
   reset=$(tput sgr0 2>/dev/null || echo '')
