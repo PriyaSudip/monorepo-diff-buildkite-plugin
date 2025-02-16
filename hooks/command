@@ -76,7 +76,7 @@ download_binary_and_run() {
   local _arch="$RETVAL"
   local _executable="monorepo-diff-buildkite-plugin"
   local _repo="https://github.com/priyasudip/monorepo-diff-buildkite-plugin"
-
+  echo "Downloading from $_repo"
   get_version || return 1
   local _version="$RETVAL"
 
